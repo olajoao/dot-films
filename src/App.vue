@@ -1,17 +1,16 @@
 <template>
   <main>
     <Header :toggle-cart-menu="toggleCartMenu" />
-    <Content :cart-menu="cartMenu" />
+    <router-view :cart-menu="cartMenu"></router-view>
   </main>
 </template>
 <script>
 import Header from './components/header/TheHeader.vue';
-import Content from './components/MainContent.vue';
 
 export default {
   name: 'App',
   components: {
-    Header, Content
+    Header
   },
   data() {
     return {
@@ -20,7 +19,7 @@ export default {
   },
   methods: {
     toggleCartMenu() {
-      this.cartMenu = !this.cartMenu
+      this.cartMenu = !this.cartMenu;
     }
   }
 }

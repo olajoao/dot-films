@@ -8,19 +8,35 @@ export const useFilmStore = defineStore("useFilmStore", {
     return {
       films: {
         popular: [],
-        topRated: [],
       },
+      pageNumber: 1
     };
   },
 
   actions: {
-    fillPopular() {
-      request
-        .get(`/movie/popular?api_key=${apiKey}`)
+    async fillPopular() {
+     return request
+        .get(`/movie/popular?api_key=${apiKey}&page=${this.pageNumber}`)
         .then(({ data }) => {
-          this.films.popular = data.results;
+          this.films.popular = this.films.popular.concat(data.results);
+          this.pageNumber++;
         })
-        .catch((error) => console.error(error));
     },
+    searchFilm(filmName) {
+
+      if(!filmName) {
+        this.pageNumber = 1;
+        this.films.popular = [];
+        this.fillPopular();
+      };
+
+      const results = this.films.popular.filter(film => {
+        let filmTitle = film.title.toLowerCase();
+        let position = filmTitle.indexOf(filmName.toLowerCase()); 
+        if(position >= 0) return film;
+      });
+
+      this.films.popular = results;
+    }
   },
 });

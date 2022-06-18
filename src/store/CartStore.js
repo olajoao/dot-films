@@ -7,11 +7,21 @@ export const useCartStore = defineStore("useCartStore", {
   state: () => {
     return {
       cart: [],
+      prices: []
     };
   },
   actions: {
-    pushItem(item) {
+    pushItem(item, price) {
       this.cart.push(item);
+      this.prices.push(price);
     },
+    emptyCart() {
+      this.cart = [];
+      this.prices = [];
+    },
+    removeFilm(item, price) {
+      this.cart = this.cart.filter(film => film.id !== item.id);
+      this.prices = this.prices.filter(value => value !== price);
+    }
   },
 });

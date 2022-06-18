@@ -10,3 +10,9 @@
         font-family: 'Mukta', sans-serif;
     }
 }
+
+@layer components {
+    .main__section--height {
+        min-height: calc(100vh - 60px);
+    }
+}
