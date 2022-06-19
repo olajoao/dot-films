@@ -2,7 +2,7 @@
   <div class="flex gap-5">
     <div
       class="overflow-hidden rounded-md"
-      :class="[inMenu ? 'w-20 h-20' : 'w-32 h-32']"
+      :class="[inMenu ? 'w-20 h-20' : 'w-20 md:w-24 h-20 md:h-24']"
     >
       <img
         class="max-w-full h-auto"

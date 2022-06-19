@@ -3,6 +3,7 @@
     @submit.prevent="handleSubmit"
     id="checkoutForm"
     class="grid grid-cols-1 md:grid-cols-2 flex-wrap gap-8"
+    ref="checkoutForm"
   >
     <label for="name" class="col-span-2">
       <p class="uppercase text-xs text-slate-400 font-bold">Name</p>
@@ -81,5 +82,9 @@ export default {
       this.$emit("showCheckoutModal", true);
     },
   },
+  mounted() {
+    console.log(this.$refs.checkoutForm)
+    this.$refs.checkoutForm.reset();
+  }
 };
 </script>

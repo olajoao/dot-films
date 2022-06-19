@@ -6,19 +6,21 @@
         <div class="w-full">
           <CheckoutForm @show-checkout-modal="modalToOpen = 'checkout-modal'"/>
         </div>
-        <div class="flex flex-col justify-between gap-10 py-6 px-4 lg:px-10 w-full">
-          <TransitionGroup>
-            <CartItem
-              v-for="(film, index) in cartStore.cart"
-              :key="film.id"
-              :in-menu="false"
-              :film-info="film"
-              :price="cartStore.prices[index]"
-            />
-          </TransitionGroup>
+        <div class="w-full">
+          <div class="flex flex-col justify-between gap-10 py-6 max-h-[43vh] overflow-y-auto">
+            <TransitionGroup>
+              <CartItem
+                v-for="(film, index) in cartStore.cart"
+                :key="film.id"
+                :in-menu="false"
+                :film-info="film"
+                :price="cartStore.prices[index]"
+              />
+            </TransitionGroup>
+          </div>
           <div>
             <div
-              class="flex text-2xl items-center justify-between mb-5 text-slate-400"
+              class="flex text-2xl items-center justify-between my-5 text-slate-400"
             >
               <h2 class="font-bold">Total</h2>
               <span>R$ {{ totalPrice.toFixed(2) }}</span>
