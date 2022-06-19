@@ -6,7 +6,7 @@ import router from "./router";
 /**
 * apiKey need to be in .env file
 * i put here only for the challenge 
-* and because i have another one :)
+* and because i want this online on vercel :)
 */
 
 export const apiKey = "10a06b62438ca5d322f7859e44a15aa5";
