@@ -10,7 +10,7 @@
     <div class="max-w-md hidden md:block">
       <label for="search" class="relative">
         <input
-          @input="searchFilm"
+          @keyup.enter="searchFilm"
           v-model="filmName"
           id="search"
           class="peer py-1 px-2 rounded-lg bg-slate-100 border-slate-100 focus:border-white focus:bg-white"
@@ -65,13 +65,13 @@ export default {
     return {
       cartStore: useCartStore(),
       favoriteStore: useFavoriteStore(),
-      filmeStore: useFilmStore(),
+      filmStore: useFilmStore(),
       filmName: "",
     };
   },
   methods: {
     searchFilm() {
-      this.filmeStore.searchFilm(this.filmName);
+      this.filmStore.search(this.filmName);
     },
   },
   computed: {

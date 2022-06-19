@@ -9,6 +9,6 @@ export default {
   props: ["cartMenu"],
   components: {
     Content,
-  },
+  }
 };
 </script>

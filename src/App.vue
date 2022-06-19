@@ -21,9 +21,6 @@ export default {
     toggleCartMenu() {
       this.cartMenu = !this.cartMenu;
     }
-  },
-  mounted() {
-    this.cartMenu = false;
   }
 }
 </script>

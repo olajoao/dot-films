@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
+import { apiKey } from "../main";
 import request from "../http";
-
-const apiKey = "10a06b62438ca5d322f7859e44a15aa5";
 
 export const useFilmStore = defineStore("useFilmStore", {
   state: () => {
@@ -22,21 +21,19 @@ export const useFilmStore = defineStore("useFilmStore", {
           this.pageNumber++;
         })
     },
-    searchFilm(filmName) {
-
+    search(filmName) {
       if(!filmName) {
         this.pageNumber = 1;
         this.films.popular = [];
         this.fillPopular();
-      };
+      }
 
-      const results = this.films.popular.filter(film => {
-        let filmTitle = film.title.toLowerCase();
-        let position = filmTitle.indexOf(filmName.toLowerCase()); 
-        if(position >= 0) return film;
-      });
-
-      this.films.popular = results;
+      request.get(`/search/movie?api_key=${apiKey}`, {
+        params: {
+          query: filmName
+        }
+      })
+        .then(({data}) => this.films.popular = data.results);
     }
-  },
+  }
 });
